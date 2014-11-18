@@ -8,10 +8,9 @@
 <title>Lista de setores</title>
 </head>
 <body>
-<h4>Setores</h4>
-<table border="1" cellpadding="1">
+<table class="table table-striped">
 <thead>
-<tr bgcolor="#c0c0c0">
+<tr bgcolor="#EBEAEA">
 	<td>Setor</td>
 	<td>Gestor responsável</td>
 </tr>

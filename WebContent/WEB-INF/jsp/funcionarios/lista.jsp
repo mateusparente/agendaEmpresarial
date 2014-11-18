@@ -8,18 +8,18 @@
 <title>Funcionários cadastrados</title>
 </head>
 <body>
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="table table-striped">
 	<thead>
-		<tr bgcolor="c0c0c0">
-			<td>Nome</td>
-			<td>Ramal</td>
-			<td>Setor</td>
-			<td>Funcao</td>
-			<td>Opções</td>
+		<tr>
+			<td><h4>Nome</h4></td>
+			<td><h4>Ramal</h4></td>
+			<td><h4>Setor</h4></td>
+			<td><h4>Funcao</h4></td>
+			<td><h4>Opções</h4></td>
 		</tr>
 	</thead>
 	<c:forEach items="${funcionarioList}" var="funcionario">
-	<tbody>
+	
 		<tr>
 			<td><a href="<c:url value='/buscaFuncionario?nome=${funcionario.nome}'/>">${funcionario.nome }</a></td>
 			<td>${funcionario.ramal }</td>
@@ -29,7 +29,7 @@
 				<a href="remove?id=${funcionario.id }">Remover</a>
 			</td>
 		</tr>
-	</tbody>
+	
 	</c:forEach>
 </table>
 </body>

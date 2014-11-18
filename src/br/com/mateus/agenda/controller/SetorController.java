@@ -20,9 +20,14 @@ public class SetorController {
 		this.result = result;
 	}
 	
+	private void incluiSetores() {
+		List<Setor> setores = dao.listaTudo();
+		result.include("setores", setores);
+	}
 	
 	@Get("/setores")
 	public List<Setor> lista(){
+		incluiSetores();
 		return dao.listaTudo();
 	}
 	
@@ -33,7 +38,7 @@ public class SetorController {
 	}
 	
 	@Get("/setores/novo")
-	public void adicionaNovoSetor(){}
+	public void adicionaNovoSetor(){ incluiSetores(); }
 	
 	
 	

@@ -8,26 +8,38 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div style="width: 30% !important;">
 <form id="usuariosForm" action="<c:url value='/usuarios'/>" method="POST">
-  <fieldset>
-    <legend>Criar novo usuário</legend>
+    <legend><h4 style="padding-left: 15px !important">Criar novo usuário</h4></legend>
         
-    <label for="nome">Nome:</label>
-      <input id="nome" class="required" type="text" name="usuario.nome" value="${usuario.nome }"/>
+    <div class="form-group">    
+    <label for="nome" class="col-sm-2 control-label">Nome:</label>
+    <div class="col-sm-10"><input id="nome" type="text" name="usuario.nome" value="${usuario.nome }" class="form-control"/></div>
+	</div>
+	
+	<div class="form-group">
+    <label for="login" class="col-sm-2 control-label">Login:</label>
+    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" value="${usuario.login }" class="form-control"/></div>
+	</div>
 
-    <label for="login">Login:</label>
-      <input id="login" class="required" type="text" name="usuario.login" value="${usuario.login }"/>
-
-    <label for="senha">Senha:</label>
-      <input id="senha" class="required" type="password" name="usuario.senha"/>
-
-    <label for="confirmacao">Confirme a senha:</label>
-      <input id="confirmacao" equalTo="#senha" type="password"/>
-
-    <button type="submit">Enviar</button>
-  </fieldset>
+    <div class="form-group">
+    <label for="senha" class="col-sm-2 control-label">Senha:</label>
+    <div class="col-sm-10"><input id="senha" type="password" name="usuario.senha" class="form-control"/></div>
+	</div>
+	
+	<div class="form-group">
+    <label for="confirmacao" class="col-sm-2 control-label">Confirme a senha:</label>
+    <div class="col-sm-10"><input id="confirmacao" equalTo="#senha" type="password" class="form-control"/></div>
+	</div>
+	
+    <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+	<button type="submit" class="btn btn-default">Logar</button>
+	</div>
+	</div>
+ 
 </form>
+</div>
 
 <script type="text/javascript">
   $('#usuariosForm').validate();

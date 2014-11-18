@@ -15,7 +15,6 @@ public class CriadorDeSession implements ComponentFactory<Session> {
 	private final SessionFactory factory;
 	private Session session;
 	
-
 	public CriadorDeSession(SessionFactory factory){
 		this.factory = factory;
 	}

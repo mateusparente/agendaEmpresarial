@@ -8,20 +8,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<div style="width: 30% !important;">
 <form action="<c:url value='/login'/>" method="POST">
   <fieldset>
-    <legend>Efetue o login</legend>
+    <legend><h4 style="padding-left: 15px !important">Efetue o login</h4></legend>
         
-    <label for="login">Login:</label>
-      <input id="login" type="text" name="usuario.login"/>
+    <div class="form-group">
+    <label for="login" class="col-sm-2 control-label">Login:</label>
+    <div class="col-sm-10"> <input id="login" type="text" name="usuario.login" class="form-control"/></div>
+    </div>
 
-    <label for="senha">Senha:</label>
-      <input id="senha" type="password" name="usuario.senha"/>
+    <div class="form-group">
+    <label for="senha" class="col-sm-2 control-label">Senha:</label>
+    <div class="col-sm-10"><input id="senha" type="password" name="usuario.senha" class="form-control"/></div>
+    </div>
 
-    <button type="submit">Login</button>
+    <div class="form-group">
+	<div class="col-sm-offset-2 col-sm-10">
+	<button type="submit" class="btn btn-default">Logar</button>
+	</div>
+	</div>
+	
   </fieldset>
 </form>
+</div>
 
 
 </body>

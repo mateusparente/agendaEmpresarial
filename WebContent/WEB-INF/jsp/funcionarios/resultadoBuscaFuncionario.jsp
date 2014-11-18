@@ -9,7 +9,7 @@
 </head>
 <body>
 <h4>Resultado da busca: ${nome}${setor}</h4><br/>
-<table border="1" cellpadding="5" cellspacing="0">
+<table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
 	<thead>
 		<tr bgcolor="c0c0c0">
 			<td>Nome</td>

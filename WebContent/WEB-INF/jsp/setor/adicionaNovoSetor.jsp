@@ -8,14 +8,30 @@
 <title>Adiciona novo setor</title>
 </head>
 <body>
-<h4>Adicione um novo setor</h4><br/>
-<table>
-<form action="<c:url value='/setores'/>" method="POST">
-	<tr>  <td>Nome do Setor</td>   <td><input type="text" name="setor.nomeDoSetor"></td>  </tr>
-	<tr>  <td>Gestor Responsavel</td>   <td><input type="text" name="setor.gestorResponsavel"></td>  </tr>
+<h4 style="padding-left: 15px !important">Adicione um novo setor</h4><hr><br/>
+<div style="width: 50% !important;">
+<form action="<c:url value='/setores'/>" method="POST" class="form-horizontal" role="form">
+
+<div class="form-group">
+<label for="nomeSetor" class="col-sm-2 control-label">Nome do Setor</label>
+<div class="col-sm-10">
+<input type="text" name="setor.nomeDoSetor" class="form-control" id="nomeSetor">
+</div>
+</div>
+
+<div class="form-group">
+<label for="nomeGestor" class="col-sm-2 control-label">Gestor Responsavel</label>
+<div class="col-sm-10">
+<input type="text" name="setor.gestorResponsavel" class="form-control" id="nomeGestor">
+</div>
+</div>
 	
-	<tr><td><input type="submit" value="Cadastrar"></td></tr>
+<div class="form-group">
+<div class="col-sm-offset-2 col-sm-10">
+<button type="submit" class="btn btn-default">Cadastrar</button>
+</div>
+</div>
 </form>
-</table>
+</div>
 </body>
 </html>

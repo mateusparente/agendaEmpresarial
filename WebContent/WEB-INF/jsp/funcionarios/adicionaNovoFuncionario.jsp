@@ -10,33 +10,109 @@
 <title>Adiciona novo Funcionario</title>
 </head>
 <body>
-<h4>Adicione um novo Funcionário</h4>
+<h4 style="padding-left: 15px;">Adicione um novo funcionário</h4>
+<hr>
 <br/>
 
-<table>
-<form action="<c:url value='/funcionarios'/>" method="POST">
-<tr><td>Nome</td><td><input type="text" name="funcionario.nome"></td></tr>
-<tr><td>Ramal</td><td><input type="text" name="funcionario.ramal"></td></tr>
-<tr><td>Telefone</td><td><input type="text" name="funcionario.telefone"></td></tr>
-<tr><td>Celular</td><td><input type="text" name="funcionario.celular"></td></tr>
-<tr><td>Celular 2</td><td><input type="text" name="funcionario.outroCelular"></td></tr>
-<tr><td>Email</td><td><input type="text" name="funcionario.email"></td></tr>
-<tr><td>Setor</td>
+<div style="width: 50% !important;">
+<form action="<c:url value='/funcionarios'/>" method="POST" class="form-horizontal" role="form">
+
+<div class="form-group">
+<label for="Nome" class="col-sm-2 control-label">Nome</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.nome" class="form-control" id="Nome">
+</div>
+</div>
+
+
+<div class="form-group">
+<label for="Ramal" class="col-sm-2 control-label">Ramal</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.ramal" class="form-control" id="Ramal"></div>
+</div>
+
+
+<div class="form-group">
+<tr><td>
+<label for="Telefone" class="col-sm-2 control-label">Telefone</label>
+</td><td>
+<div class="col-sm-10">
+<input type="text" name="funcionario.telefone" class="form-control" id="Telefone"></div>
+</td></tr>
+</div>
+
+
+<div class="form-group">
+<tr><td>
+<label for="Celular" class="col-sm-2 control-label">Celular</label>
+</td><td>
+<div class="col-sm-10">
+<input type="text" name="funcionario.celular" class="form-control" id="Celular"></div>
+</td></tr>
+</div>
+
+
+<div class="form-group">
+<tr><td>
+<label for="Celular2" class="col-sm-2 control-label">Celular 2</label>
+</td><td>
+<div class="col-sm-10">
+<input type="text" name="funcionario.celularOutro" class="form-control" id="Celular2"></div>
+</td></tr>
+</div>
+
+
+<div class="form-group">
+<tr><td>
+<label for="Email" class="col-sm-2 control-label">Email</label>
+</td><td>
+<div class="col-sm-10">
+<input type="email" name="funcionario.email" class="form-control" id="Email"></div>
+</td></tr>
+</div>
+
+<div class="form-group">
+<tr><td><label for="setor" class="col-sm-2 control-label">Setor</label></td>
 
 <td>	
-<select name="funcionario.setor">
+<div class="col-sm-10">
+<select name="funcionario.setor" class="form-control" id="setor">
 
 <c:forEach items="${setores}" var="setor">
-	<option value="${setor.nomeDoSetor}">${setor.nomeDoSetor }</option>
+	<option value="${setor.nomeDoSetor}">${setor.nomeDoSetor}</option>
 </c:forEach>
 </select>
+</div>
 </td></tr>
+</div>
 
 
-<tr><td>Função</td><td><input type="text" name="funcionario.funcao"></td></tr>
-<tr><td>Observações</td><td><input type="text" name="funcionario.observacoes"></td></tr>
-<tr><td><input type="submit"></td></tr>
+<div class="form-group">
+<tr><td>
+<label for="Funcao" class="col-sm-2 control-label">Funcao</label>
+</td><td>
+<div class="col-sm-10">
+<input type="text" name="funcionario.funcao" class="form-control" id="Funcao"></div>
+</td></tr>
+</div>
+
+
+<div class="form-group">
+<tr><td>
+<label for="Observacoes" class="col-sm-2 control-label">Observações</label>
+</td><td>
+<div class="col-sm-10">
+<textarea name="funcionario.observacoes" class="form-control" id="Observacoes"></textarea>
+</div>
+</td></tr>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <tr><td><button type="submit" class="btn btn-default">Enviar</button></td></tr>
+    </div>
+  </div>
 </form>
-</table>
+</div>
 </body>
 </html>

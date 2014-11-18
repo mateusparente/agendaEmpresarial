@@ -15,7 +15,6 @@ import br.com.mateus.agenda.modelo.Funcionario;
 public class FuncionarioDao {
 
 	private final Session session;
-
 	
 	public FuncionarioDao(Session session) {
 		this.session = session;
