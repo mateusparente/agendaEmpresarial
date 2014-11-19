@@ -19,8 +19,8 @@
 
 	<c:forEach items="${setorList}" var="setor">
 	<tr>
-		<td>${setor.nomeDoSetor }</td>
-		<td>${setor.gestorResponsavel }</td>
+		<td><a href="<c:url value='/buscaFuncionario?setor=${setor.nomeDoSetor}'/>">${setor.nomeDoSetor }</a></td>
+		<td><a href="<c:url value='/buscaFuncionario?nome=${setor.gestorResponsavel}'/>">${setor.gestorResponsavel }</a></td>
 	</tr>
 	</c:forEach>
 

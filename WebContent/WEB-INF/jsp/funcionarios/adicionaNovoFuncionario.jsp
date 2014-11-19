@@ -8,6 +8,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Adiciona novo Funcionario</title>
+<script src="../../../validate/lib/jquery.js"></script>
+<script src="../../../validate/dist/jquery.validate.js"></script>
+<script type="text/javascript">
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
+
+	$("#FormularioAdicionaFuncionario").$.validate();
+</script>
 </head>
 <body>
 <h4 style="padding-left: 15px;">Adicione um novo funcionário</h4>
@@ -15,12 +26,13 @@
 <br/>
 
 <div style="width: 50% !important;">
-<form action="<c:url value='/funcionarios'/>" method="POST" class="form-horizontal" role="form">
+
+<form action="<c:url value='/funcionarios'/>" method="POST" class="form-horizontal" role="form" id="FormularioAdicionaFuncionario">
 
 <div class="form-group">
-<label for="Nome" class="col-sm-2 control-label">Nome</label>
+<label for="nome" class="col-sm-2 control-label">Nome</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.nome" class="form-control" id="Nome">
+<input type="text" name="funcionario.nome" class="form-control" id="nome" required>
 </div>
 </div>
 
@@ -77,7 +89,7 @@
 <td>	
 <div class="col-sm-10">
 <select name="funcionario.setor" class="form-control" id="setor">
-
+<option>Selecione o setor</option>
 <c:forEach items="${setores}" var="setor">
 	<option value="${setor.nomeDoSetor}">${setor.nomeDoSetor}</option>
 </c:forEach>
@@ -110,6 +122,7 @@
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <tr><td><button type="submit" class="btn btn-default">Enviar</button></td></tr>
+      
     </div>
   </div>
 </form>

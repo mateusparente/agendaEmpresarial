@@ -65,7 +65,7 @@
 	<option>Busca por setor</option>
 <c:forEach items="${setores}" var="setor">
 
-	<option value="<c:url value='/buscaFuncionario?setor=${setor.nomeDoSetor}&nome=${nome}'/>">${setor.nomeDoSetor }</option>
+	<option value="<c:url value='/buscaFuncionario?setor=${setor.nomeDoSetor}'/>">${setor.nomeDoSetor }</option>
 </c:forEach>
 </select>
 </div>

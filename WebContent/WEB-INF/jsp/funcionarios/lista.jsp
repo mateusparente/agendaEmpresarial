@@ -23,11 +23,16 @@
 		<tr>
 			<td><a href="<c:url value='/buscaFuncionario?nome=${funcionario.nome}'/>">${funcionario.nome }</a></td>
 			<td>${funcionario.ramal }</td>
-			<td>${funcionario.setor }</td>
+			<td><a href="<c:url value='/buscaFuncionario?setor=${funcionario.setor}'/>">${funcionario.setor }</a></td>
 			<td>${funcionario.funcao }</td>
+			<c:if test="${usuarioWeb.logado}">
 			<td><a href="edita/${funcionario.id}">Editar</a>
 				<a href="remove?id=${funcionario.id }">Remover</a>
 			</td>
+			</c:if>
+			<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
+				<td>--</td>
+			</c:if>
 		</tr>
 	
 	</c:forEach>

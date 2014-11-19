@@ -26,8 +26,12 @@
     <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-10">
 	<button type="submit" class="btn btn-default">Logar</button>
+	<c:forEach var="error" items="${errors}">
+    	<b>${error.category}  ${error.message}</b>
+	</c:forEach>
 	</div>
 	</div>
+	
 	
   </fieldset>
 </form>

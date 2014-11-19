@@ -51,7 +51,7 @@ public class FuncionarioDao {
 	public List<Funcionario> busca(String nome, String setor){
 		Criteria crit = this.session.createCriteria(Funcionario.class);
 		
-		if(nome.equals("")){
+		if(nome==null){
 			return crit.add(Restrictions.ilike("setor", setor, MatchMode.ANYWHERE)).list();
 		}else{
 			return crit.add(Restrictions.ilike("nome", nome, MatchMode.ANYWHERE)).list();

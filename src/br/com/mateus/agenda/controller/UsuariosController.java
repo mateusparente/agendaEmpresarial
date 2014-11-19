@@ -1,6 +1,5 @@
 package br.com.mateus.agenda.controller;
 
-import javax.servlet.jsp.tagext.ValidationMessage;
 
 import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
@@ -8,7 +7,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.Message;
+import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.mateus.agenda.dao.UsuarioDao;
 import br.com.mateus.agenda.modelo.Usuario;
 import br.com.mateus.agenda.modelo.UsuarioWeb;
@@ -32,7 +31,7 @@ public class UsuariosController {
 	@Post("/usuarios")
 	public void adiciona(Usuario usuario){
 		if(dao.existeUsuario(usuario)){
-			validator.add((Message) new ValidationMessage("Login ja existe", "usuario.login"));
+			validator.add(new ValidationMessage("Este usuário já existe", usuario.getLogin()));
 		}
 		validator.onErrorUsePageOf(UsuariosController.class).novo();
 		dao.adiciona(usuario);
@@ -43,7 +42,7 @@ public class UsuariosController {
 	public void login(Usuario usuario){
 		Usuario carregado = dao.carrega(usuario);
 		if(carregado == null){
-			validator.add((Message) new ValidationMessage("Login e/ou senha inválidos", "usuario.login"));
+			validator.add(new ValidationMessage("Login e/ou senha inválidos", null));
 		}
 		
 		validator.onErrorUsePageOf(UsuariosController.class).loginForm();

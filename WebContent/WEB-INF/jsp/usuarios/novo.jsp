@@ -6,6 +6,15 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<script type="text/javascript">
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
+
+	$("#usuariosForm").$.validate();
+</script>
 </head>
 <body>
 <div style="width: 30% !important;">
@@ -14,36 +23,36 @@
         
     <div class="form-group">    
     <label for="nome" class="col-sm-2 control-label">Nome:</label>
-    <div class="col-sm-10"><input id="nome" type="text" name="usuario.nome" value="${usuario.nome }" class="form-control"/></div>
+    <div class="col-sm-10"><input id="nome" type="text" name="usuario.nome" value="${usuario.nome }" class="form-control" required/></div>
 	</div>
 	
 	<div class="form-group">
     <label for="login" class="col-sm-2 control-label">Login:</label>
-    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" value="${usuario.login }" class="form-control"/></div>
+    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" value="${usuario.login }" class="form-control" required/></div>
 	</div>
 
     <div class="form-group">
     <label for="senha" class="col-sm-2 control-label">Senha:</label>
-    <div class="col-sm-10"><input id="senha" type="password" name="usuario.senha" class="form-control"/></div>
+    <div class="col-sm-10"><input id="senha" type="password" name="usuario.senha" class="form-control" required/></div>
 	</div>
 	
 	<div class="form-group">
     <label for="confirmacao" class="col-sm-2 control-label">Confirme a senha:</label>
-    <div class="col-sm-10"><input id="confirmacao" equalTo="#senha" type="password" class="form-control"/></div>
+    <div class="col-sm-10"><input id="confirmacao" equalTo="#senha" type="password" class="form-control" required/></div>
 	</div>
 	
     <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-10">
 	<button type="submit" class="btn btn-default">Logar</button>
+	<br/>
 	</div>
+	<c:forEach var="error" items="${errors}">
+    	${error.category} - ${error.message}<br />
+	</c:forEach>
 	</div>
- 
+ 	
 </form>
 </div>
-
-<script type="text/javascript">
-  $('#usuariosForm').validate();
-</script>
 
 </body>
 </html>

@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h4>Resultado da busca: ${nome}${setor}</h4><br/>
-<table border="1" cellpadding="5" cellspacing="0" class="table table-striped">
+<h4 style="padding-left: 15px !important;">Resultado da busca: ${nome}${setor}</h4><br/>
+<table class="table table-hover">
 	<thead>
-		<tr bgcolor="c0c0c0">
+		<tr bgcolor="#EBEAEA">
 			<td>Nome</td>
 			<td>Ramal</td>
 			<td>Telefone</td>
@@ -24,8 +24,8 @@
 			<td>Opções</td>
 		</tr>
 	</thead>
-	<c:forEach items="${funcionarioList}" var="funcionario">
 	<tbody>
+	<c:forEach items="${funcionarioList}" var="funcionario">
 		<tr>
 			<td>${funcionario.nome }</td>
 			<td>${funcionario.ramal }</td>
@@ -36,12 +36,18 @@
 			<td>${funcionario.setor }</td>
 			<td>${funcionario.funcao }</td>
 			<td>${funcionario.observacoes }</td>
+			<c:if test="${usuarioWeb.logado}">
 			<td><a href="edita/${funcionario.id}">Editar</a>
 				<a href="remove?id=${funcionario.id }">Remover</a>
 			</td>
+			</c:if>
+			<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
+				<td>--</td>
+			</c:if>
 		</tr>
-	</tbody>
 	</c:forEach>
+	</tbody>
+
 </table>
 
 </body>

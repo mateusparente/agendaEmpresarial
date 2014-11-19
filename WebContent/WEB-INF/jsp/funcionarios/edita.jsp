@@ -6,6 +6,17 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Editando</title>
+<script src="../../../validate/lib/jquery.js"></script>
+<script src="../../../validate/dist/jquery.validate.js"></script>
+<script type="text/javascript">
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
+
+	$("#FormularioEditaFuncionario").$.validate();
+</script>
 </head>
 <body>
 
@@ -13,9 +24,9 @@
 <br/>
 
 <table>
-<form action="<c:url value='/altera'/>" method="POST">
+<form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario">
 <input type="hidden" name="funcionario.id" value="${funcionario.id }"/>	
-<tr><td>Nome</td><td><input type="text" name="funcionario.nome" value="${funcionario.nome }"></td></tr>
+<tr><td>Nome</td><td><input type="text" name="funcionario.nome" value="${funcionario.nome }" required></td></tr>
 <tr><td>Ramal</td><td><input type="text" name="funcionario.ramal" value="${funcionario.ramal }"></td></tr>
 <tr><td>Telefone</td><td><input type="text" name="funcionario.telefone" value="${funcionario.telefone }"></td></tr>
 <tr><td>Celular</td><td><input type="text" name="funcionario.celular" value="${funcionario.celular }"></td></tr>

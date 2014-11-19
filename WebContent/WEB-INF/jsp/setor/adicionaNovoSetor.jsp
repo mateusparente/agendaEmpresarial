@@ -6,16 +6,25 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Adiciona novo setor</title>
+<script type="text/javascript">
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
+
+	$("#FormularioAdicionaSetor").$.validate();
+</script>
 </head>
 <body>
 <h4 style="padding-left: 15px !important">Adicione um novo setor</h4><hr><br/>
 <div style="width: 50% !important;">
-<form action="<c:url value='/setores'/>" method="POST" class="form-horizontal" role="form">
+<form action="<c:url value='/setores'/>" method="POST" class="form-horizontal" role="form" id="FormularioAdicionaSetor">
 
 <div class="form-group">
 <label for="nomeSetor" class="col-sm-2 control-label">Nome do Setor</label>
 <div class="col-sm-10">
-<input type="text" name="setor.nomeDoSetor" class="form-control" id="nomeSetor">
+<input type="text" name="setor.nomeDoSetor" class="form-control" id="nomeSetor" required>
 </div>
 </div>
 
