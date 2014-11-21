@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
 
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.mateus.agenda.modelo.Setor;
@@ -26,7 +27,7 @@ public class SetorDao {
 	
 	@SuppressWarnings("unchecked")
 	public List<Setor> listaTudo(){
-		return this.session.createCriteria(Setor.class).list();
+		return this.session.createCriteria(Setor.class).addOrder(Order.asc("nomeDoSetor")).list();
 	}
 	
 	

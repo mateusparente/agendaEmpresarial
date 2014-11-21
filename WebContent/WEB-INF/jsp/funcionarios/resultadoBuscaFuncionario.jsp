@@ -35,7 +35,7 @@
 			<td>${funcionario.email }</td>
 			<td>${funcionario.setor }</td>
 			<td>${funcionario.funcao }</td>
-			<td>${funcionario.observacoes }</td>
+			<td width="10%">${funcionario.observacoes }</td>
 			<c:if test="${usuarioWeb.logado}">
 			<td><a href="edita/${funcionario.id}">Editar</a>
 				<a href="remove?id=${funcionario.id }">Remover</a>

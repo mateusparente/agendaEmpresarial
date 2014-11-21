@@ -9,33 +9,65 @@
 <script src="../../../validate/lib/jquery.js"></script>
 <script src="../../../validate/dist/jquery.validate.js"></script>
 <script type="text/javascript">
-	$.validator.setDefaults({
-		submitHandler: function() {
-			alert("submitted!");
-		}
-	});
-
 	$("#FormularioEditaFuncionario").$.validate();
 </script>
 </head>
 <body>
 
-<h4>Editar</h4>
+<h4 style="padding-left: 15px;">Editando funcionario</h4><hr>
 <br/>
+<div style="width: 50% !important;">
 
-<table>
-<form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario">
+<form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario" class="form-horizontal">
 <input type="hidden" name="funcionario.id" value="${funcionario.id }"/>	
-<tr><td>Nome</td><td><input type="text" name="funcionario.nome" value="${funcionario.nome }" required></td></tr>
-<tr><td>Ramal</td><td><input type="text" name="funcionario.ramal" value="${funcionario.ramal }"></td></tr>
-<tr><td>Telefone</td><td><input type="text" name="funcionario.telefone" value="${funcionario.telefone }"></td></tr>
-<tr><td>Celular</td><td><input type="text" name="funcionario.celular" value="${funcionario.celular }"></td></tr>
-<tr><td>Celular 2</td><td><input type="text" name="funcionario.outroCelular" value="${funcionario.celularOutro }"></td></tr>
-<tr><td>Email</td><td><input type="text" name="funcionario.email" value="${funcionario.email }"></td></tr>
-<tr><td>Setor</td>
+<div class="form-group">
+<label for="nome" class="col-sm-2 control-label">Nome</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.nome" class="form-control" id="Nome" value="${funcionario.nome}">
+</div>
+</div>
 
-<td>	
-<select name="funcionario.setor">
+
+<div class="form-group">
+<label for="Ramal" class="col-sm-2 control-label">Ramal</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.ramal" class="form-control" id="Ramal"  value="${funcionario.ramal}"></div>
+</div>
+
+
+<div class="form-group">
+<label for="Telefone" class="col-sm-2 control-label">Telefone</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.telefone" class="form-control" id="Telefone"  value="${funcionario.telefone}"></div>
+</div>
+
+
+<div class="form-group">
+<label for="Celular" class="col-sm-2 control-label">Celular</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.celular" class="form-control" id="Celular"  value="${funcionario.celular}"></div>
+</div>
+
+
+<div class="form-group">
+<label for="Celular2" class="col-sm-2 control-label">Celular 2</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.celularOutro" class="form-control" id="Celular2"  value="${funcionario.celularOutro}"></div>
+</div>
+
+
+<div class="form-group">
+<label for="Email" class="col-sm-2 control-label">Email</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.email" class="form-control" id="Email"  value="${funcionario.email}"></div>
+</div>
+
+<div class="form-group">
+<label for="setor" class="col-sm-2 control-label">Setor</label>
+
+<div class="col-sm-10">
+<select name="funcionario.setor" class="form-control">
+<c:if test="${funcionario.setor=='Não cadastrado'}"><option value="Não cadastrado" selected="selected">Selecione o setor</option></c:if>
 <c:forEach items="${setores}" var="setor">
 	<c:choose>
 		<c:when test="${funcionario.setor == setor.nomeDoSetor}">
@@ -46,16 +78,34 @@
 		</c:otherwise>
 	</c:choose>
 </c:forEach>
+
 </select>
-</td></tr>
+</div>
+</div>
 
 
-<tr><td>Função</td><td><input type="text" name="funcionario.funcao" value="${funcionario.funcao }"></td></tr>
-<tr><td>Observações</td><td><input type="text" name="funcionario.observacoes" value="${funcionario.observacoes }"></td></tr>
-<tr><td><input type="submit" value="Enviar"></td></tr>
+<div class="form-group">
+<label for="Funcao" class="col-sm-2 control-label">Funcao</label>
+<div class="col-sm-10">
+<input type="text" name="funcionario.funcao" class="form-control" id="Funcao" value="${funcionario.funcao}"></div>
+</div>
+
+
+<div class="form-group">
+<label for="Observacoes" class="col-sm-2 control-label">Observações</label>
+<div class="col-sm-10">
+<textarea name="funcionario.observacoes" class="form-control" id="Observacoes">${funcionario.observacoes}</textarea>
+</div>
+</div>
+
+<div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Editar</button>
+    </div>
+  </div>
 </form>
-</table>
 
+</div>
 
 </body>
 </html>

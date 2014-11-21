@@ -10,7 +10,6 @@
 <body>
 <div style="width: 30% !important;">
 <form action="<c:url value='/login'/>" method="POST">
-  <fieldset>
     <legend><h4 style="padding-left: 15px !important">Efetue o login</h4></legend>
         
     <div class="form-group">
@@ -31,9 +30,7 @@
 	</c:forEach>
 	</div>
 	</div>
-	
-	
-  </fieldset>
+
 </form>
 </div>
 
