@@ -7,7 +7,7 @@ import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
-import br.com.caelum.vraptor.validator.ValidationMessage;
+import br.com.caelum.vraptor.validator.Validations;
 import br.com.mateus.agenda.dao.FuncionarioDao;
 import br.com.mateus.agenda.dao.SetorDao;
 import br.com.mateus.agenda.interceptor.Restrito;
@@ -42,13 +42,40 @@ public class FuncionariosController {
 	
 	@Post("/funcionarios")
 	public void adiciona(final Funcionario funcionario){
-		if(funcionario.getNome().length() <= 3){
-			validator.add(new ValidationMessage(funcionario.getNome(), "Nome inválido"));
-		}
+		validator.checking(new Validations(){ {
+			if(that(funcionario.getNome().length() >= 3,"funcionario.nome","nome.nulo")){
+					that(funcionario.getNome().length() <3, "funcionario.nome","nome.invalido");
+					that(funcionario.getRamal().length() >= 5,"funcionario.ramal","limite.ramal.excedido");
+					that(funcionario.getTelefone().length() > 11,"funcionario.telefone","limite.tamanho.telefone.excedido");
+					that(funcionario.getCelular().length() > 11, "funcionario.celular","limite.tamanho.telefone.excedido");
+					that(funcionario.getCelularOutro().length() > 11, "funcionario.celularOutro","limite.tamanho.telefone.excedido");
+					that(funcionario.getEmail().length() > 120, "funcionario.email","limite.tamanho.excedido");
+					that(funcionario.getFuncao().length() > 100, "funcionario.funcao","limite.tamanho.excedido");
+					that(funcionario.getObservacoes().length() > 254, "funcionario.observacoes","limite.tamanho.excedido");
+			}
+			
+			}});
+		
 		validator.onErrorUsePageOf(FuncionariosController.class).adicionaNovoFuncionario();
 		dao.salva(funcionario);
-		result.redirectTo(this).lista();
+		result.redirectTo(FuncionariosController.class).lista();
 	}
+
+	/*private void validaCamposFormularioAdicionaContato(final Funcionario funcionario) {
+		validator.checking(new Validations(){ {
+		if(that(funcionario.getNome().length() >= 3,"funcionario.nome","nome.nulo")){
+				that(funcionario.getNome().length() <3, "funcionario.nome","nome.invalido");
+				that(funcionario.getRamal().length() >= 4,"funcionario.ramal","limite.ramal.excedido");
+				that(funcionario.getTelefone().length() > 11,"funcionario.telefone","limite.tamanho.telefone.excedido");
+				that(funcionario.getCelular().length() > 11, "funcionario.celular","limite.tamanho.telefone.excedido");
+				that(funcionario.getCelularOutro().length() > 11, "funcionario.celularOutro","limite.tamanho.telefone.excedido");
+				that(funcionario.getEmail().length() > 120, "funcionario.email","limite.tamanho.excedido");
+				that(funcionario.getFuncao().length() > 100, "funcionario.funcao","limite.tamanho.excedido");
+				that(funcionario.getObservacoes().length() > 254, "funcionario.observacoes","limite.tamanho.excedido");
+		}
+		validator.onErrorUsePageOf(FuncionariosController.class).adicionaNovoFuncionario();
+		}});
+	}*/
 	
 	@Get("/funcionarios/novo")
 	public void adicionaNovoFuncionario(){

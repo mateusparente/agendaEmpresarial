@@ -25,4 +25,13 @@ id="WebApp_ID" version="2.5">
 			<include-prelude>/header.jspf</include-prelude>
 		</jsp-property-group>
 	</jsp-config>
+	
+	<context-param>  
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>  
+        <param-value>messages</param-value>  
+    </context-param>  
+    <context-param>  
+        <param-name>javax.servlet.jsp.jstl.fmt.locale</param-name>  
+        <param-value>pt_BR</param-value>  
+    </context-param>  
 </web-app>

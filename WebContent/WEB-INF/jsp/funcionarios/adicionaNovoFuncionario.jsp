@@ -41,10 +41,25 @@
 					minlength: 2,
 					maxlength: 100
 				},
+				'funcionario.email':{
+					required: false,
+					maxlength: 100,
+				},
+				'funcionario.funcao':{
+					required: false,
+					maxlength: 120,
+				},
+				'funcionario.observacoes':{
+					required: false,
+					maxlength: 255,
+				},
+				
 			},
 			
 			messages: {
 				'funcionario.nome': "O nome é necessário",
+				'funcionario.observacoes': "Limite de tamanho atingido",
+				'funcionario.email': "Limite de tamanho atingido"
 			} 
 
 			
@@ -64,6 +79,9 @@
 <body>
 <h4 style="padding-left: 15px;">Adicione um novo funcionário</h4>
 <hr>
+<c:forEach var="error" items="${errors}">
+    	<b>${error.category}  ${error.message}</b>
+	</c:forEach>
 <br/>
 
 <div style="width: 50% !important;">
