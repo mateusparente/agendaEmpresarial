@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 
+import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.ioc.Component;
 import br.com.mateus.agenda.modelo.Setor;
 
@@ -14,9 +15,11 @@ import br.com.mateus.agenda.modelo.Setor;
 public class SetorDao {
 
 	private final Session session;
+	private final Result result;
 	
-	public SetorDao(Session session) {
+	public SetorDao(Session session, Result result) {
 		this.session = session;
+		this.result = result;
 	}
 	
 	public void salva(Setor setor){
@@ -28,6 +31,11 @@ public class SetorDao {
 	@SuppressWarnings("unchecked")
 	public List<Setor> listaTudo(){
 		return this.session.createCriteria(Setor.class).addOrder(Order.asc("nomeDoSetor")).list();
+	}
+	
+	public void incluiSetores() {
+		List<Setor> setores = listaTudo();
+		result.include("setores", setores);
 	}
 	
 	

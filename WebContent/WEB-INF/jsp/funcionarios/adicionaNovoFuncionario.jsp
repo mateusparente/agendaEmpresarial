@@ -80,7 +80,7 @@
 <h4 style="padding-left: 15px;">Adicione um novo funcionário</h4>
 <hr>
 <c:forEach var="error" items="${errors}">
-    	<b>${error.category}  ${error.message}</b>
+    	<p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
 	</c:forEach>
 <br/>
 
@@ -166,6 +166,9 @@
     </div>
   </div>
 </form>
+	<c:if test="${errors != null}">
+		<p style="padding: 15px; color: red; font-style: italic;">O Javascript do seu navegador pode estar desativado, habilite para uma melhor navegação</p>
+	</c:if>    	
 </div>
 </body>
 </html>
