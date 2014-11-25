@@ -90,44 +90,42 @@
 
 <div class="form-group">
 <label for="nome" class="col-sm-2 control-label">Nome</label>
-<div class="col-sm-10">
-<input type="text" name="funcionario.nome" class="form-control" id="Nome">
-</div>
+<div class="col-sm-10"><input type="text" name="funcionario.nome" class="form-control" id="Nome" value="${funcionario.nome}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Ramal" class="col-sm-2 control-label">Ramal</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.ramal" class="form-control" id="Ramal"></div>
+<input type="text" name="funcionario.ramal" class="form-control" id="Ramal" value="${funcionario.ramal}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Telefone" class="col-sm-2 control-label">Telefone</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.telefone" class="form-control" id="Telefone"></div>
+<input type="text" name="funcionario.telefone" class="form-control" id="Telefone" value="${funcionario.telefone}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Celular" class="col-sm-2 control-label">Celular</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.celular" class="form-control" id="Celular"></div>
+<input type="text" name="funcionario.celular" class="form-control" id="Celular" value="${funcionario.celular}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Celular2" class="col-sm-2 control-label">Celular 2</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.celularOutro" class="form-control" id="Celular2"></div>
+<input type="text" name="funcionario.celularOutro" class="form-control" id="Celular2" value="${funcionario.celularOutro}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Email" class="col-sm-2 control-label">Email</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.email" class="form-control" id="Email"></div>
+<input type="text" name="funcionario.email" class="form-control" id="Email" value="${funcionario.email}"></div>
 </div>
 
 <div class="form-group">
@@ -148,14 +146,14 @@
 <div class="form-group">
 <label for="Funcao" class="col-sm-2 control-label">Funcao</label>
 <div class="col-sm-10">
-<input type="text" name="funcionario.funcao" class="form-control" id="Funcao"></div>
+<input type="text" name="funcionario.funcao" class="form-control" id="Funcao"  value="${funcionario.funcao}"></div>
 </div>
 
 
 <div class="form-group">
 <label for="Observacoes" class="col-sm-2 control-label">Observações</label>
 <div class="col-sm-10">
-<textarea name="funcionario.observacoes" class="form-control" id="Observacoes"></textarea>
+<textarea name="funcionario.observacoes" class="form-control" id="Observacoes">${funcionario.observacoes}</textarea>
 </div>
 </div>
 
@@ -166,9 +164,6 @@
     </div>
   </div>
 </form>
-	<c:if test="${errors != null}">
-		<p style="padding: 15px; color: red; font-style: italic;">O Javascript do seu navegador pode estar desativado, habilite para uma melhor navegação</p>
-	</c:if>    	
 </div>
 </body>
 </html>

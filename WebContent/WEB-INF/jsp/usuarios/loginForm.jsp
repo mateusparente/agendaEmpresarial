@@ -8,13 +8,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+<h4 style="padding-left: 15px !important">Efetue o login</h4>
+<hr>
 <div style="width: 30% !important;">
-<form action="<c:url value='/login'/>" method="POST">
-    <legend><h4 style="padding-left: 15px !important">Efetue o login</h4></legend>
-        
+
+<form action="<c:url value='/login'/>" method="POST" class="form-horizontal" role="form">
+    
     <div class="form-group">
     <label for="login" class="col-sm-2 control-label">Login:</label>
-    <div class="col-sm-10"> <input id="login" type="text" name="usuario.login" class="form-control"/></div>
+    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" class="form-control"/></div>
     </div>
 
     <div class="form-group">

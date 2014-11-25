@@ -6,19 +6,83 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Editando</title>
-<script src="../../../validate/lib/jquery.js"></script>
-<script src="../../../validate/dist/jquery.validate.js"></script>
-<script type="text/javascript">
-	$("#FormularioEditaFuncionario").$.validate();
-</script>
+<script src="<c:url value='/validate/lib/jquery.js'/>"></script>
+<script src="<c:url value='/validate/dist/jquery.validate.js'/>"></script>
+<script src="<c:url value='/validate/jquery.maskedinput.js'/>"></script>
+<script>
+	$.validator.setDefaults({
+		
+	highlight: function(element) {
+        $(element).closest('.form-group').addClass('has-error');
+    },
+    unhighlight: function(element) {
+        $(element).closest('.form-group').removeClass('has-error');
+    },
+    errorElement: 'span',
+    errorClass: 'help-block',
+    errorPlacement: function(error, element) {
+        if(element.parent('.input-group').length) {
+            error.insertAfter(element.parent());
+        } else {
+            error.insertAfter(element);
+        }
+    }
+	});
+
+	$(document).ready(function() {
+
+		$("#FormularioEditaFuncionario").validate({
+			rules: {
+				'funcionario.nome': {
+					required: true,
+					minlength: 2,
+					maxlength: 100
+				},
+				'funcionario.email':{
+					required: false,
+					maxlength: 100,
+				},
+				'funcionario.funcao':{
+					required: false,
+					maxlength: 120,
+				},
+				'funcionario.observacoes':{
+					required: false,
+					maxlength: 255,
+				},
+				
+			},
+			
+			messages: {
+				'funcionario.nome': "O nome é necessário",
+				'funcionario.observacoes': "Limite de tamanho atingido",
+				'funcionario.email': "Limite de tamanho atingido"
+			} 
+
+			
+		});
+
+		$("#Ramal").mask('9999');
+		$("#Telefone").mask('(99)9999-9999?9');
+		$("#Celular").mask('(99)9999-9999?9');
+		$("#Celular2").mask('(99)9999-9999?9');
+		
+	}); 
+
+	
+
+	</script>
 </head>
 <body>
 
 <h4 style="padding-left: 15px;">Editando funcionario</h4><hr>
+<c:forEach var="error" items="${errors}">
+    <p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
+</c:forEach>
 <br/>
 <div style="width: 50% !important;">
 
-<form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario" class="form-horizontal">
+<form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario" class="form-horizontal" role="form">
 <input type="hidden" name="funcionario.id" value="${funcionario.id }"/>	
 <div class="form-group">
 <label for="nome" class="col-sm-2 control-label">Nome</label>

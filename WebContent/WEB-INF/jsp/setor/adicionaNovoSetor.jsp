@@ -34,12 +34,18 @@
 			rules: {
 				'setor.nomeDoSetor': {
 					required: true,
-					minlength: 2
+					minlength: 2,
+					maxlength: 120
+				},
+				'setor.gestorResponsavel': {
+					required: false,
+					maxlength: 120
 				},
 			},
 			
 			messages: {
 				'setor.nomeDoSetor': "O nome do setor é necessário",
+				'setor.gestorResponsavel': "Limite excedido"
 				
 			} 
 		});
