@@ -13,6 +13,7 @@
 <tr bgcolor="#EBEAEA">
 	<td>Setor</td>
 	<td>Gestor responsável</td>
+	<td>Opções</td>
 </tr>
 <thead>
 <tbody>
@@ -21,6 +22,13 @@
 	<tr>
 		<td><a href="<c:url value='/buscaFuncionario?setor=${setor.nomeDoSetor}'/>">${setor.nomeDoSetor }</a></td>
 		<td><a href="<c:url value='/buscaFuncionario?nome=${setor.gestorResponsavel}'/>">${setor.gestorResponsavel }</a></td>
+		
+		<c:if test="${usuarioWeb.logado}">
+			<td><a href="removeSetor?id=${setor.id}">Remover</a></td>
+		</c:if>
+		<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
+			<td>--</td>
+		</c:if>
 	</tr>
 	</c:forEach>
 

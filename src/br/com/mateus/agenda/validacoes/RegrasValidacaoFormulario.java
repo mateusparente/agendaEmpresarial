@@ -69,21 +69,23 @@ public final class RegrasValidacaoFormulario {
             }        
             
             setorDao.incluiSetores();
-            System.out.println(funcionario.getTelefone());
+            
                 
             }});
         
         	validator.onErrorUsePageOf(FuncionariosController.class).adicionaNovoFuncionario();
+        	
     }
 	
 	public void validaFormularioAdicionaSetores(final Setor setor){
 		validator.checking(new Validations() {{
-			if(that(!(setor.getNomeDoSetor().isEmpty()==false),"Campo Nome do Setor","nome.nulo")){
+			
+			if(that(!(setor.getNomeDoSetor().isEmpty()),"Campo Nome do Setor","nome.nulo")){
 				that(!(setor.getNomeDoSetor().length() <= 2), setor.getNomeDoSetor(),"nome.invalido");
 				that(!(setor.getNomeDoSetor().length() > 120), setor.getNomeDoSetor(),"limite.tamanho.excedido");
 			}
 			
-			if(that(!(setor.getGestorResponsavel().isEmpty()==false), "Campo Gestor responsável","nome.nulo")){
+			if(setor.getGestorResponsavel().isEmpty()==false){
 				that(!(setor.getGestorResponsavel().length() <= 2), setor.getNomeDoSetor(),"nome.invalido");
 				that(!(setor.getGestorResponsavel().length() > 120), setor.getNomeDoSetor(),"limite.tamanho.excedido");
 			}
@@ -91,17 +93,20 @@ public final class RegrasValidacaoFormulario {
 		}});	
 		
 		validator.onErrorUsePageOf(SetorController.class).adicionaNovoSetor();
+	
 	}
 	
 	public void validaFormularioAdicionaUsuario(final Usuario usuario){
 		validator.checking(new Validations() {{
 			
-			if(that(!(usuario.getNome().isEmpty()==false),"Campo Nome","nome.nulo")){
+			if(that(!(usuario.getNome().isEmpty()),"Campo Nome","nome.nulo")){
 				that(!(usuario.getLogin().length() <= 2), usuario.getLogin(),"nome.invalido");
 				that(!(usuario.getSenha().length() > 120), "Campo senha","limite.tamanho.excedido");
 			}
 			
 		}});
+		
+		//validator.onErrorUsePageOf(SetorController.class).adicionaNovoSetor();
 		
 	}
 	

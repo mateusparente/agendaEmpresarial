@@ -2,86 +2,22 @@
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Adiciona novo Funcionario</title>
+
 <script src="<c:url value='/validate/lib/jquery.js'/>"></script>
 <script src="<c:url value='/validate/dist/jquery.validate.js'/>"></script>
 <script src="<c:url value='/validate/jquery.maskedinput.js'/>"></script>
+<script src="<c:url value='/validacoesFormularios/regras_adiciona_funcionario.js'/>"></script>
 
-<script>
-	$.validator.setDefaults({
-		
-	highlight: function(element) {
-        $(element).closest('.form-group').addClass('has-error');
-    },
-    unhighlight: function(element) {
-        $(element).closest('.form-group').removeClass('has-error');
-    },
-    errorElement: 'span',
-    errorClass: 'help-block',
-    errorPlacement: function(error, element) {
-        if(element.parent('.input-group').length) {
-            error.insertAfter(element.parent());
-        } else {
-            error.insertAfter(element);
-        }
-    }
-	});
-
-	$(document).ready(function() {
-
-		$("#FormularioAdicionaFuncionario").validate({
-			rules: {
-				'funcionario.nome': {
-					required: true,
-					minlength: 2,
-					maxlength: 100
-				},
-				'funcionario.email':{
-					required: false,
-					maxlength: 100,
-				},
-				'funcionario.funcao':{
-					required: false,
-					maxlength: 120,
-				},
-				'funcionario.observacoes':{
-					required: false,
-					maxlength: 255,
-				},
-				
-			},
-			
-			messages: {
-				'funcionario.nome': "O nome é necessário",
-				'funcionario.observacoes': "Limite de tamanho atingido",
-				'funcionario.email': "Limite de tamanho atingido"
-			} 
-
-			
-		});
-
-		$("#Ramal").mask('9999');
-		$("#Telefone").mask('(99)9999-9999?9');
-		$("#Celular").mask('(99)9999-9999?9');
-		$("#Celular2").mask('(99)9999-9999?9');
-		
-	}); 
-
-	
-
-	</script>
 </head>
 <body>
-<h4 style="padding-left: 15px;">Adicione um novo funcionário</h4>
+<h4 style="padding-left: 15px;">Adicione um novo funcionÃ¡rio</h4>
 <hr>
-<c:forEach var="error" items="${errors}">
-    	<p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
-	</c:forEach>
+
 <br/>
 
 <div style="width: 50% !important;">
@@ -134,7 +70,7 @@
 	
 <div class="col-sm-10">
 <select name="funcionario.setor" class="form-control" id="setor">
-<option value="Não cadastrado">Selecione o setor</option>
+<option value="NÃ£o cadastrado">Selecione o setor</option>
 <c:forEach items="${setores}" var="setor">
 	<option value="${setor.nomeDoSetor}">${setor.nomeDoSetor}</option>
 </c:forEach>
@@ -151,7 +87,7 @@
 
 
 <div class="form-group">
-<label for="Observacoes" class="col-sm-2 control-label">Observações</label>
+<label for="Observacoes" class="col-sm-2 control-label">ObservaÃ§Ãµes</label>
 <div class="col-sm-10">
 <textarea name="funcionario.observacoes" class="form-control" id="Observacoes">${funcionario.observacoes}</textarea>
 </div>

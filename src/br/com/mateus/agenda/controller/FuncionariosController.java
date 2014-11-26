@@ -9,6 +9,7 @@ import br.com.caelum.vraptor.Result;
 import br.com.mateus.agenda.dao.FuncionarioDao;
 import br.com.mateus.agenda.dao.SetorDao;
 import br.com.mateus.agenda.interceptor.Restrito;
+import br.com.mateus.agenda.mensagensDeFormulario.MensagensFuncionario;
 import br.com.mateus.agenda.modelo.Funcionario;
 import br.com.mateus.agenda.validacoes.RegrasValidacaoFormulario;
 
@@ -19,12 +20,14 @@ public class FuncionariosController {
 	private final SetorDao setorDao;
 	private final Result result;
 	private final RegrasValidacaoFormulario regrasValidacao;
+	private final MensagensFuncionario mensagensDeValidacao;
 	
-	public FuncionariosController(FuncionarioDao dao, Result result, SetorDao setorDao, RegrasValidacaoFormulario regrasValidacao){
+	public FuncionariosController(FuncionarioDao dao, Result result, SetorDao setorDao, RegrasValidacaoFormulario regrasValidacao, MensagensFuncionario mensagensDeValidacao){
 		this.dao = dao;
 		this.result = result;
 		this.setorDao = setorDao;
 		this.regrasValidacao = regrasValidacao;
+		this.mensagensDeValidacao = mensagensDeValidacao;
 	}
 	
 	
@@ -38,8 +41,7 @@ public class FuncionariosController {
 	public void adiciona(final Funcionario funcionario){
 		regrasValidacao.validaFormularioAdicionaFuncionario(funcionario);
 		dao.salva(funcionario);
-		result.include("confirmacao","alert alert-success");
-		result.include("mensagemConfirmacao","Funcionario inserido com sucesso!");
+		mensagensDeValidacao.enviaMensagemAdicionadoComSucesso();
 		result.redirectTo(FuncionariosController.class).lista();
 	}
 
@@ -61,8 +63,7 @@ public class FuncionariosController {
 	public void altera(Funcionario funcionario){
 		regrasValidacao.validaFormularioAdicionaFuncionario(funcionario);
 		dao.atualiza(funcionario);
-		result.include("confirmacao","alert alert-success");
-		result.include("mensagemConfirmacao","Funcionario editado com sucesso!");
+		mensagensDeValidacao.enviaMensagemEditadoComSucesso();
 		result.redirectTo(this).lista();
 	}
 	
@@ -71,8 +72,7 @@ public class FuncionariosController {
 	public void remove(Integer id){
 		Funcionario funcionario = dao.carrega(id);
 		dao.remove(funcionario);
-		result.include("confirmacao","alert alert-success");
-		result.include("mensagemConfirmacao","Funcionario removido com sucesso!");
+		mensagensDeValidacao.enviaMensagemRemovidoComSucesso();
 		result.redirectTo(this).lista();
 	}
 	

@@ -38,5 +38,15 @@ public class SetorDao {
 		result.include("setores", setores);
 	}
 	
+	public Setor carrega(Integer id){
+		return (Setor) this.session.load(Setor.class, id);
+	}
+	
+	public void remove(Setor setor){
+		Transaction tx = session.beginTransaction();
+		this.session.delete(setor);
+		tx.commit();
+	}
+	
 	
 }

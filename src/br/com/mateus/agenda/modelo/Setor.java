@@ -20,6 +20,9 @@ public class Setor implements Serializable {
 	private String nomeDoSetor;
 	private String gestorResponsavel;
 	
+	public Integer getId() {
+		return id;
+	}
 	public String getNomeDoSetor() {
 		return nomeDoSetor;
 	}

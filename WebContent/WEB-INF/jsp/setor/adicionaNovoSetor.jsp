@@ -29,7 +29,7 @@
 		
 	});
 
-	$().ready(function() {
+	$(document).ready(function() {
 		$("#FormularioAdicionaSetor").validate({
 			rules: {
 				'setor.nomeDoSetor': {
@@ -44,7 +44,10 @@
 			},
 			
 			messages: {
-				'setor.nomeDoSetor': "O nome do setor é necessário",
+				'setor.nomeDoSetor':{
+					required: "O nome do setor é necessário",
+					maxlength: "Caracteres acima do permitido"
+				},
 				'setor.gestorResponsavel': "Limite excedido"
 				
 			} 
@@ -54,7 +57,11 @@
 	</script>
 </head>
 <body>
-<h4 style="padding-left: 15px !important">Adicione um novo setor</h4><hr><br/>
+<h4 style="padding-left: 15px !important">Adicione um novo setor</h4><hr>
+<c:forEach var="error" items="${errors}">
+    	<p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
+	</c:forEach>
+<br/>
 <div style="width: 50% !important;">
 <form action="<c:url value='/setores'/>" method="POST" class="form-horizontal" role="form" id="FormularioAdicionaSetor">
 

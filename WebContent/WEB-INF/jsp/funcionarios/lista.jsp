@@ -8,7 +8,7 @@
 <title>Funcionários cadastrados</title>
 </head>
 <body>
-<div class="${confirmacao}" role="alert">${mensagemConfirmacao}</div>
+
 <table class="table table-striped">
 	<thead>
 		<tr>

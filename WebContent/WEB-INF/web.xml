@@ -23,6 +23,7 @@ id="WebApp_ID" version="2.5">
 			<display-name>Agenda de contatos</display-name>
 			<url-pattern>*.jsp</url-pattern>
 			<include-prelude>/header.jspf</include-prelude>
+			<include-coda>/footer.jspf</include-coda>
 		</jsp-property-group>
 	</jsp-config>
 	

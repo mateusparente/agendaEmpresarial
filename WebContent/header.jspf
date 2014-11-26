@@ -3,9 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Agenda</title>
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +22,6 @@
 <script src="../js/bootstrap.min.js"></script>
 
 <div id="header"> 
-
 
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
@@ -97,14 +94,31 @@
 </nav>
 
 </div>
-
-</div> 
 <div id="erros"> 
-</div> 
-<div id="body"> 
-<div id="menu"> 
 
+<c:if test="${errors != null}">
+	<div class="alert alert-warning alert-dismissible" role="alert">
+		<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+ 		<c:forEach var="error" items="${errors}">
+    		<p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
+		</c:forEach>
+	</div>
+</c:if>
+
+<c:if test="${mensagemDoSistema != null}">
+
+	<div class="${categoriaMensagem} alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert">
+		<span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		${mensagemDoSistema}
+	</div>
+	
+</c:if>
 </div> 
+
+<div id="body"> 
+
+<div id="menu"> 
+</div> 
+
 <div id="content"> 
 
-</html>
