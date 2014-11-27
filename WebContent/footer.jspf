@@ -1,7 +1,8 @@
-<!-- </div>
+
 </div>
-<div id="footer">
-	<div class="container">
-		<p class="text-muted">Teste</p>
-	</div>
-</div> -->
+</div>
+ <footer class="footer">
+      <div class="container-fluid" style="padding-top: 15px !important;">
+        <p class="text-muted">Desenvolvido por Mateus Parente</p>
+      </div>
+    </footer>

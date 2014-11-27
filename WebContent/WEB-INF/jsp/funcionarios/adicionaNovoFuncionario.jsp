@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -20,10 +20,9 @@
 
 <br/>
 
-<div style="width: 50% !important;">
 
 <form action="<c:url value='/funcionarios'/>" method="POST" class="form-horizontal" role="form" id="FormularioAdicionaFuncionario">
-
+<div class="container">
 <div class="form-group">
 <label for="nome" class="col-sm-2 control-label">Nome</label>
 <div class="col-sm-10"><input type="text" name="funcionario.nome" class="form-control" id="Nome" value="${funcionario.nome}"></div>
@@ -95,11 +94,12 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Enviar</button>
+      <button type="submit" class="btn btn-primary">Cadastrar</button>
       
     </div>
   </div>
-</form>
 </div>
+</form>
+
 </body>
 </html>

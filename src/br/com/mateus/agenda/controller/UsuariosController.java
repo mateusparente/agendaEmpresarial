@@ -9,8 +9,10 @@ import br.com.caelum.vraptor.Result;
 import br.com.caelum.vraptor.Validator;
 import br.com.caelum.vraptor.validator.ValidationMessage;
 import br.com.mateus.agenda.dao.UsuarioDao;
+import br.com.mateus.agenda.mensagensDeFormulario.MensagensUsuario;
 import br.com.mateus.agenda.modelo.Usuario;
 import br.com.mateus.agenda.modelo.UsuarioWeb;
+import br.com.mateus.agenda.validacoes.RegrasValidacaoFormulario;
 
 @Resource
 public class UsuariosController {
@@ -19,13 +21,16 @@ public class UsuariosController {
 	private final Result result;
 	private final Validator validator;
 	private final UsuarioWeb usuarioWeb;
+	private final MensagensUsuario mensagensValidacoes;
+	private final RegrasValidacaoFormulario regrasValidacao;
 	
-	public UsuariosController(UsuarioDao dao, Result result, Validator validator, UsuarioWeb usuarioWeb) {
-		super();
+	public UsuariosController(UsuarioDao dao, Result result, Validator validator, UsuarioWeb usuarioWeb, MensagensUsuario mensagensValidacoes, RegrasValidacaoFormulario regrasValidacao) {
 		this.dao = dao;
 		this.result = result;
 		this.validator = validator;
 		this.usuarioWeb = usuarioWeb;
+		this.mensagensValidacoes = mensagensValidacoes;
+		this.regrasValidacao = regrasValidacao;
 	}
 	
 	@Post("/usuarios")
@@ -33,8 +38,9 @@ public class UsuariosController {
 		if(dao.existeUsuario(usuario)){
 			validator.add(new ValidationMessage("Este usuário já existe", usuario.getLogin()));
 		}
-		validator.onErrorUsePageOf(UsuariosController.class).novo();
+		regrasValidacao.validaFormularioAdicionaUsuario(usuario);
 		dao.adiciona(usuario);
+		mensagensValidacoes.enviaMensagemAdicionadoComSucesso();
 		result.redirectTo(FuncionariosController.class).lista();
 	}
 	

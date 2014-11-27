@@ -5,6 +5,7 @@ import br.com.caelum.vraptor.ioc.Component;
 import br.com.caelum.vraptor.validator.Validations;
 import br.com.mateus.agenda.controller.FuncionariosController;
 import br.com.mateus.agenda.controller.SetorController;
+import br.com.mateus.agenda.controller.UsuariosController;
 import br.com.mateus.agenda.dao.SetorDao;
 import br.com.mateus.agenda.modelo.Funcionario;
 import br.com.mateus.agenda.modelo.Setor;
@@ -99,14 +100,19 @@ public final class RegrasValidacaoFormulario {
 	public void validaFormularioAdicionaUsuario(final Usuario usuario){
 		validator.checking(new Validations() {{
 			
-			if(that(!(usuario.getNome().isEmpty()),"Campo Nome","nome.nulo")){
-				that(!(usuario.getLogin().length() <= 2), usuario.getLogin(),"nome.invalido");
-				that(!(usuario.getSenha().length() > 120), "Campo senha","limite.tamanho.excedido");
-			}
+		that(!(usuario.getNome().isEmpty()),"Campo Nome","nome.nulo");
+		if(usuario.getNome().isEmpty()==false){
+			that(!(usuario.getNome().length() > 100),"Campo Nome","limite.tamanho.excedido");
+			that(!(usuario.getNome().length() < 2),"Campo Nome","nome.invalido");
+			that(!(usuario.getLogin().length() <= 2), usuario.getLogin(),"login.invalido");
+			that(!(usuario.getLogin().length() >= 50), usuario.getLogin(),"limite.tamanho.excedido");
+			that(!(usuario.getSenha().length() > 120), "Campo senha","limite.tamanho.excedido");
+			that(!(usuario.getSenha().length() < 5), "Campo senha","senha.invalido");
+		}
 			
 		}});
 		
-		//validator.onErrorUsePageOf(SetorController.class).adicionaNovoSetor();
+		validator.onErrorUsePageOf(UsuariosController.class).novo();
 		
 	}
 	

@@ -10,26 +10,23 @@
 <body>
 <h4 style="padding-left: 15px !important">Efetue o login</h4>
 <hr>
-<div style="width: 30% !important;">
+<div class="container">
 
 <form action="<c:url value='/login'/>" method="POST" class="form-horizontal" role="form">
     
     <div class="form-group">
-    <label for="login" class="col-sm-2 control-label">Login:</label>
+    <label for="login" class="col-md-4">Login:</label>
     <div class="col-sm-10"><input id="login" type="text" name="usuario.login" class="form-control"/></div>
     </div>
 
     <div class="form-group">
-    <label for="senha" class="col-sm-2 control-label">Senha:</label>
+    <label for="senha" class="col-md-4">Senha:</label>
     <div class="col-sm-10"><input id="senha" type="password" name="usuario.senha" class="form-control"/></div>
     </div>
 
     <div class="form-group">
-	<div class="col-sm-offset-2 col-sm-10">
-	<button type="submit" class="btn btn-default">Logar</button>
-	<c:forEach var="error" items="${errors}">
-    	<b>${error.category}  ${error.message}</b>
-	</c:forEach>
+	<div class="col-md-4">
+	<button type="submit" class="btn btn-primary">Logar</button>
 	</div>
 	</div>
 

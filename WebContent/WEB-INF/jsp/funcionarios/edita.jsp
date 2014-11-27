@@ -80,7 +80,7 @@
     <p style="padding-left: 15px !important; color: red"><img src='<c:url value="/imgs/warning.png"/>' style="padding-right: 7px;"><b>${error.category} - ${error.message}</b></p>
 </c:forEach>
 <br/>
-<div style="width: 50% !important;">
+<div class="container">
 
 <form action="<c:url value='/altera'/>" method="POST" id="FormularioEditaFuncionario" class="form-horizontal" role="form">
 <input type="hidden" name="funcionario.id" value="${funcionario.id }"/>	
@@ -164,7 +164,7 @@
 
 <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Editar</button>
+      <button type="submit" class="btn btn-primary">Editar</button>
     </div>
   </div>
 </form>
