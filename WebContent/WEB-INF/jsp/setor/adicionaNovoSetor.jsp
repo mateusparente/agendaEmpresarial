@@ -21,7 +21,7 @@
 <div class="form-group">
 <label for="nomeSetor" class="col-md-4">Nome do Setor</label>
 <div class="col-sm-10">
-<input type="text" name="setor.nomeDoSetor" class="form-control" id="nomeSetor">
+<input type="text" name="setor.nomeDoSetor" class="form-control" id="nomeSetor" autofocus>
 </div>
 </div>
 

@@ -16,7 +16,7 @@
     
     <div class="form-group">
     <label for="login" class="col-md-4">Login:</label>
-    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" class="form-control"/></div>
+    <div class="col-sm-10"><input id="login" type="text" name="usuario.login" class="form-control" autofocus/></div>
     </div>
 
     <div class="form-group">

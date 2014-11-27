@@ -28,7 +28,7 @@
 			<td>${funcionario.funcao }</td>
 			<c:if test="${usuarioWeb.logado}">
 			<td><a href="edita/${funcionario.id}">Editar</a>
-				<a href="remove?id=${funcionario.id }">Remover</a>
+				<a class="removivel" href="remove?id=${funcionario.id }">Remover</a>
 			</td>
 			</c:if>
 			<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">

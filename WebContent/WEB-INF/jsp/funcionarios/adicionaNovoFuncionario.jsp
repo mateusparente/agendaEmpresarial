@@ -25,7 +25,7 @@
 <div class="container">
 <div class="form-group">
 <label for="nome" class="col-sm-2 control-label">Nome</label>
-<div class="col-sm-10"><input type="text" name="funcionario.nome" class="form-control" id="Nome" value="${funcionario.nome}"></div>
+<div class="col-sm-10"><input type="text" name="funcionario.nome" class="form-control" id="Nome" value="${funcionario.nome}" autofocus></div>
 </div>
 
 

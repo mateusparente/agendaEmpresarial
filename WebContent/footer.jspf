@@ -2,7 +2,7 @@
 </div>
 </div>
  <footer class="footer">
-      <div class="container-fluid" style="padding-top: 15px !important;">
+      <div class="container-fluid" style="padding-top: 20px !important;">
         <p class="text-muted">Desenvolvido por Mateus Parente</p>
       </div>
     </footer>

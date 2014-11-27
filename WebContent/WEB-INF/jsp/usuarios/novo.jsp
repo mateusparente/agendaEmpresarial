@@ -17,7 +17,7 @@
 
     <div class="form-group">    
     <label for="nome" class="col-md-4">Nome:</label>
-    <div class="col-sm-10"><input id="nome" type="text" name="usuario.nome" value="${usuario.nome }" class="form-control"/></div>
+    <div class="col-sm-10"><input id="nome" type="text" name="usuario.nome" value="${usuario.nome }" class="form-control" autofocus/></div>
 	</div>
 	
 	<div class="form-group">

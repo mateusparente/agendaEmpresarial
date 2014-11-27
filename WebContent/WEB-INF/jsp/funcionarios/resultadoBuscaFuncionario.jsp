@@ -25,6 +25,14 @@
 		</tr>
 	</thead>
 	<tbody>
+	<c:choose>
+
+	<c:when test="${funcionarioList == null}">
+		<div class="container"><h3>Nada foi encontrado</h3></div>
+	</c:when>
+	
+	
+	<c:otherwise>
 	<c:forEach items="${funcionarioList}" var="funcionario">
 		<tr>
 			<td>${funcionario.nome }</td>
@@ -46,6 +54,10 @@
 			</c:if>
 		</tr>
 	</c:forEach>
+	</c:otherwise>
+	
+	</c:choose>
+	
 	</tbody>
 
 </table>

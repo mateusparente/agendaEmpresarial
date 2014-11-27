@@ -19,6 +19,7 @@ package br.com.caelum.vraptor.blank;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Resource;
 import br.com.caelum.vraptor.Result;
+import br.com.mateus.agenda.controller.FuncionariosController;
 
 @Resource
 public class IndexController {
@@ -31,7 +32,7 @@ public class IndexController {
 
 	@Path("/")
 	public void index() {
-		result.include("variable", "VRaptor!");
+		result.redirectTo(FuncionariosController.class).lista();
 	}
 
 }
