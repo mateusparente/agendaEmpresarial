@@ -61,7 +61,7 @@
         </li>
         
         <li>
-      <div style="width:200px !important; padding-top: 8px !important">
+      <div style="width:200px !important; padding-top: 8px !important; padding-left: 15px !important;">
 <select name="opcoes" id="opcoes" onChange="Redireciona(this.value)"  class="form-control">
 	<option>Busca por setor</option>
 <c:forEach items="${setores}" var="setor">
@@ -88,7 +88,7 @@
     	</c:if>
     	
     	<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
-    	<li><h6>Você não está logado.</h6></li>
+    	<li><h4><span class="label label-primary">Você não está logado.</span></h4></li>
       	<li><a href="<c:url value="/login"/>">Login</a> </li>
       	<li><a href="<c:url value="/novo"/>">Cadastre-se</a></li>
     	</c:if>
