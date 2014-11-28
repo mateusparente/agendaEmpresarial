@@ -50,13 +50,13 @@ public final class RegrasValidacaoFormulario {
             if(funcionario.getCelular().length() > 0){
                 that(!(funcionario.getCelular().length() > 14), "Campo Celular","limite.tamanho.excedido");
              //   that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular","telefone.invalido");
-                that(!(funcionario.getTelefone().length() < 10),"Campo celular","telefone.invalido");
+                that(!(funcionario.getCelular().length() < 10),"Campo celular","telefone.invalido");
             }
                 
-            if(funcionario.getCelular().length() > 0){
+            if(funcionario.getCelularOutro().length() > 0){
                 that(!(funcionario.getCelularOutro().length() > 14), "Campo Celular adicional","limite.tamanho.excedido");
            //     that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular adicional","telefone.invalido");
-                that(!(funcionario.getTelefone().length() < 10),"Campo celular 2","telefone.invalido");
+                that(!(funcionario.getCelularOutro().length() < 10),"Campo celular 2","telefone.invalido");
             }
                 
             if(funcionario.getEmail().length() > 0){
