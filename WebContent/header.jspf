@@ -83,12 +83,12 @@
       <ul class="nav navbar-nav navbar-right">
         
         <c:if test="${usuarioWeb.logado}">
-     	<li><h6>Olá, ${usuarioWeb.nome }! </h6></li>
+     	<li><h4><span class="label label-primary">Olá, ${usuarioWeb.nome }! </span></h4></li>
       	<li><a href="<c:url value="/logout"/>">Logout</a></li>
     	</c:if>
     	
     	<c:if test="${empty usuarioWeb or not usuarioWeb.logado}">
-    	<li><h4><span class="label label-primary">Você não está logado.</span></h4></li>
+    	<li><h4><span class="label label-warning">Você não está logado.</span></h4></li>
       	<li><a href="<c:url value="/login"/>">Login</a> </li>
       	<li><a href="<c:url value="/novo"/>">Cadastre-se</a></li>
     	</c:if>

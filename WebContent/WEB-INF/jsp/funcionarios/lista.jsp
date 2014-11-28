@@ -6,6 +6,11 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Funcionários cadastrados</title>
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".removivel").click(function() { return confirm("Tem certeza que quer remover o registro?"); });
+});
+</script>
 </head>
 <body>
 
