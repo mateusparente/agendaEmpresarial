@@ -25,58 +25,58 @@ public final class RegrasValidacaoFormulario {
 	//String formatoTelefone = "[0-9]{1,11}";
 	//String formatoTelefone = "\\((13)|([1-9][1-9])\\)[2-9][0-9]{3}-[0-9]{4}";
 	
+
 	private static final String EMAIL_PATTERN = 
 			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 		
 
-	public void validaFormularioAdicionaFuncionario(final Funcionario funcionario) {
-        validator.checking(new Validations() {{
-            if(that(!(funcionario.getNome().isEmpty()),"Erro","nome.nulo")){
-                that(!(funcionario.getNome().length() <= 2), funcionario.getNome(),"nome.invalido");
+	public boolean validaFormularioAdicionaFuncionario(final Funcionario funcionario) {
+		validator.checking(new Validations() {{
+			if (that(!(funcionario.getNome().isEmpty()), "Erro", "nome.nulo")) {
+				that(!(funcionario.getNome().length() <= 2), funcionario.getNome(), "nome.invalido");
+				
+				if (funcionario.getRamal().length() > 0) {
+					// that(!(funcionario.getRamal().matches(formatoTelefone)==false),funcionario.getRamal(),"telefone.invalido");
+					that(!(funcionario.getRamal().length() > 4), funcionario.getRamal(), "limite.ramal.excedido");
+					that(!(funcionario.getRamal().length() < 4), funcionario.getRamal(), "telefone.invalido");
+				}
                 
-            if(funcionario.getRamal().length() > 0){
-                //that(!(funcionario.getRamal().matches(formatoTelefone)==false),funcionario.getRamal(),"telefone.invalido");
-                that(!(funcionario.getRamal().length() > 4),funcionario.getRamal(),"limite.ramal.excedido");
-                that(!(funcionario.getRamal().length() < 4),funcionario.getRamal(),"telefone.invalido");
-            }
+				if (funcionario.getTelefone().length() > 0) {
+					that(!(funcionario.getTelefone().length() > 14), "Campo telefone", "limite.tamanho.excedido");
+					// that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo telefone","telefone.invalido");
+					that(!(funcionario.getTelefone().length() < 10), "Campo telefone", "telefone.invalido");
+				}
                 
-            if(funcionario.getTelefone().length() > 0){
-                that(!(funcionario.getTelefone().length() > 14),"Campo telefone","limite.tamanho.excedido");
-                //that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo telefone","telefone.invalido");
-                that(!(funcionario.getTelefone().length() < 10),"Campo telefone","telefone.invalido");
-            }
+				if (funcionario.getCelular().length() > 0) {
+					that(!(funcionario.getCelular().length() > 14), "Campo Celular", "limite.tamanho.excedido");
+					// that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular","telefone.invalido");
+					that(!(funcionario.getTelefone().length() < 10), "Campo celular", "telefone.invalido");
+				}
                 
-            if(funcionario.getCelular().length() > 0){
-                that(!(funcionario.getCelular().length() > 14), "Campo Celular","limite.tamanho.excedido");
-             //   that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular","telefone.invalido");
-                that(!(funcionario.getTelefone().length() < 10),"Campo celular","telefone.invalido");
-            }
+				if (funcionario.getCelular().length() > 0) {
+					that(!(funcionario.getCelularOutro().length() > 14), "Campo Celular adicional", "limite.tamanho.excedido");
+					// that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular adicional","telefone.invalido");
+					that(!(funcionario.getTelefone().length() < 10), "Campo celular 2", "telefone.invalido");
+				}
                 
-            if(funcionario.getCelular().length() > 0){
-                that(!(funcionario.getCelularOutro().length() > 14), "Campo Celular adicional","limite.tamanho.excedido");
-           //     that(!(funcionario.getTelefone().matches(formatoTelefone)==false),"Campo Celular adicional","telefone.invalido");
-                that(!(funcionario.getTelefone().length() < 10),"Campo celular 2","telefone.invalido");
-            }
-                
-            if(funcionario.getEmail().length() > 0){
-                that(!(funcionario.getEmail().length() > 120), "Campo Email","limite.tamanho.excedido");
-                that(!(funcionario.getEmail().matches(EMAIL_PATTERN)==false), "Campo Email","email.invalido");
-            }
-            
-            
-                that(!(funcionario.getFuncao().length() > 100), "Campo Função","limite.tamanho.excedido");
-                that(!(funcionario.getObservacoes().length() > 254), "Campo Observações","limite.tamanho.excedido");
-            }        
-            
-            setorDao.incluiSetores();
-            
-                
-            }});
-        
-        	validator.onErrorUsePageOf(FuncionariosController.class).adicionaNovoFuncionario();
-        	
-    }
+				if (funcionario.getEmail().length() > 0) {
+					that(!(funcionario.getEmail().length() > 120), "Campo Email", "limite.tamanho.excedido");
+					that(!(funcionario.getEmail().matches(EMAIL_PATTERN) == false), "Campo Email", "email.invalido");
+				}
+				
+				that(!(funcionario.getFuncao().length() > 100), "Campo Função","limite.tamanho.excedido");
+				that(!(funcionario.getObservacoes().length() > 254), "Campo Observações","limite.tamanho.excedido");
+			}
+			
+			setorDao.incluiSetores();
+			
+		}});
+		
+		validator.onErrorUsePageOf(FuncionariosController.class).adicionaNovoFuncionario();
+		
+		return validator.hasErrors();
+	}
 	
 	public void validaFormularioAdicionaSetores(final Setor setor){
 		validator.checking(new Validations() {{
