@@ -8,7 +8,7 @@
 <title>Funcionários cadastrados</title>
 <script type="text/javascript">
 $(document).ready(function(){
-	$(".removivel").click(function() { return confirm("Tem certeza que quer remover o registro?"); });
+	$(".removivel").click(function() { return confirm("Tem certeza que quer remover este funcionário?"); });
 });
 </script>
 </head>
